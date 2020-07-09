@@ -6,13 +6,18 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "prop-types": "^15.7.2",
+    "ra-data-json-server": "^3.7.0",
     "react": "^16.13.1",
+    "react-admin": "^3.7.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://packnpack --acl public-read",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

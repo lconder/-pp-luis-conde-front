@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { Admin, Resource } from 'react-admin';
+import {url} from './constants'
+import authProvider from './authProvider'
+import jsonServerProvider from './Provider';
+import {MyLoginPage} from './layout';
+import UserIcon from '@material-ui/icons/Group';
+import {UserCreate, UserList} from './users'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const dataProvider = jsonServerProvider(url);
+const App = () => (
+
+    <Admin
+        title="Dashboard"
+        authProvider={authProvider}
+        loginPage={MyLoginPage}
+        dataProvider={dataProvider}
+    >
+
+      <Resource
+          name="users"
+          icon={UserIcon}
+          list={UserList}
+          create={UserCreate}
+          options={{ label: 'Usuarios' }}
+      />
+
+    </Admin>
+);
 
 export default App;
